@@ -7,11 +7,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { root } from './routes/root';
+import { Layout } from './components/layout/layout';
 
 const router = createBrowserRouter(root());
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Layout>
+      <RouterProvider router={router} />
+    </Layout>
   </React.StrictMode>,
 )

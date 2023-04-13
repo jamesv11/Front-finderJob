@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import { LoginPage } from './views/login/loginPage';
+import { LoginPage } from './views/login/login-page'
 
 
 function App() {
 
   return (
     <>
-      <LoginPage></LoginPage>
+      
+        
     </>
-    
+
   )
 }
 
