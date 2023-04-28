@@ -16,9 +16,9 @@ let schema = Yup.object({
     nit: Yup.string().required("Requerido"),
     address: Yup.string().required("Requerido"),
     phone: Yup.string().required("Requerido"),
-    email: Yup.string().required("Requerido"),
+    email: Yup.string().email("Email invalido.").required("Requerido"),
     password: Yup.string().required("Requerido"),
-
+    confirmPassword: Yup.string().required("Requerido")
 });
 
 
@@ -29,7 +29,8 @@ export interface FormCandidate {
     address: string,
     phone: string,
     email: string,
-    password: string
+    password: string,
+
 }
 
 export const CandidateLogin = ({ className }: formProps) => {
@@ -44,7 +45,7 @@ export const CandidateLogin = ({ className }: formProps) => {
             </div>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <InputForm label="Dirección" type="text" name="address" />
-                <InputForm label="Telefono" type="text" name="phone" />
+                <InputForm label="Telefono" type="tel" name="phone" />
             </div>
             <div>
                 <InputForm label="Email" type="email" name="email" />

@@ -7,7 +7,7 @@ export interface cardProps {
     className?: string;
 }
 export const Card = ({title, description, children , className}:cardProps) => {
-    return <div className="w-max rounded overflow-hidden shadow-lg ">
+    return <div className="w-max rounded overflow-hidden shadow-lg shadow-blue-200">
     <div className={`${className} px-10 py-6`}>
       <div className="font-medium text-3xl mb-2">{title}</div>
       <p className="text-gray-700 text-base my-1">

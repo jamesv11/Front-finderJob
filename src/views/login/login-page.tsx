@@ -1,6 +1,5 @@
 import { Card, cardProps } from "../../components/card/card"
-import { CandidateLogin } from "../../components/login/Candidate/candidate-login"
-import { SignUp } from "../../components/login/login-form/sign-up-view"
+import {SignIn} from "../../components/login/login-form/sign-in-view"
 
 export const LoginPage = () => {
 
@@ -28,13 +27,19 @@ export const LoginPage = () => {
 
             </section> */}
             <section className="flex w-full justify-around items-center  ">
-                <h2 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-zinc-100 md:text-6xl lg:text-7xl">Finderjob</h2>
-                <Card title="Bienvenido" description="Inicia sesion para continuar con tu camino."  className="bg-zinc-100">
-                    <SignUp/>
-                    
-                </Card>
+                <article>
+                    <h2 className="mb-2 text-4xl font-extrabold leading-none tracking-tight text-blue-400 md:text-6xl lg:text-7xl">Finderjob</h2>
+                    <p className="font-medium text-ms text-center text-blue-400">Encuentra tu trabajo soñado.</p>
+                </article>
+                <article>
+                    <Card title="Bienvenido" description="Inicia sesion para continuar con tu camino." className="bg-zinc-50">
+                        <SignIn />
+                    </Card>
+                </article>
             </section>
 
         </div>
     )
 }
+
+export default LoginPage;

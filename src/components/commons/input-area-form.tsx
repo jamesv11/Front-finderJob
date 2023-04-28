@@ -27,6 +27,6 @@ export const InputAreaForm = ({
             {...field}
             {...props}
         />
-        <ErrorMessage name={props.name} component="span" className="block text-sm font-medium text-rose-700 text-right" />
+        <ErrorMessage name={props.name} component="span" className="block text-xs font-medium text-rose-700 my-1" />
     </div>
 }
