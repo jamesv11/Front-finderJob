@@ -25,7 +25,7 @@ export const ModalBase = ({ title, description, question, size, open, children,t
         handleModal(!open);
 
         onSubmit && onSubmit(option=1);
-        
+
     }
 
 

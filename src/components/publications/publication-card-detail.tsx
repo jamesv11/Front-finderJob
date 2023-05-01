@@ -48,6 +48,7 @@ export const PublicationCardDetail = () => {
                     <section className="">
                         <p className="text-xl pb-2">Aspirantes</p>
                         <section className="overflow-auto flex flex-wrap h-80 max-h-80 min-h-80">
+                            <CandidateCard></CandidateCard>
                         </section>
                     </section>
                 </div>

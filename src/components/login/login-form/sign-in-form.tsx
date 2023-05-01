@@ -3,7 +3,7 @@ import { FormBase } from "../../commons/form-base"
 import { InputForm } from "../../commons/input-form";
 import * as Yup from "yup";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 let schema = Yup.object({
     email: Yup.string().email("Email invalido.").required("Requerido."),
@@ -14,6 +14,8 @@ let schema = Yup.object({
 
 
 export const SignInForm = () => {
+
+    const navigate = useNavigate();
 
     const [generalErrorState, setGeneralErrorState] = useState<boolean>(false);
 
@@ -57,7 +59,7 @@ export const SignInForm = () => {
             email: values.email,
             id: "",
         };
-        console.log(values);
+        navigate("/portal/publications");
     };
 
 
