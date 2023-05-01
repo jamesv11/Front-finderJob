@@ -14,7 +14,7 @@ export const CustomButton = ({
     <button
       onClick={onClick}
       disabled={disabled || loading}
-      className={`${className}`}
+      className={`${className} border border-gray-700`}
       style={style}
       {...otherProps}
     >

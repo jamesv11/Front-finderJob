@@ -73,7 +73,7 @@ export const PublicationPage = () => {
     };
 
     return (<>
-        <ModalBase title="Crear publicacion" size={900} open={modal} handleModal={setModal} type={"form"} >
+        <ModalBase size={900} title="Crear publicacion" open={modal} handleModal={setModal} type={"form"} >
             <FormBase
                 initialValues={initialValues}
                 yupSchema={schema}
@@ -81,6 +81,19 @@ export const PublicationPage = () => {
                 onSubmit={onSubmit}
             />
         </ModalBase>
+        <section>
+            {
+                offers.length <= 0 && <div className="inset-20 border border-neutral-950 bg-zinc-50 px-4 flex flex-col items-center z-10 fixed bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center w-full left-0 h-full" >
+                    <p className="py-2 text-center">No hay nada aun por aca, no te olvides de agregar una oferta!! <br /> Click aqui 👇!! </p>
+                    <CustomButton
+                        onClick={setModal}
+                        type="submit"
+                        content="Agregar oferta"
+                        className="my-2.5 bg-blue-400 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
+                    />
+                </div>
+            }
+        </section>
         <section className="py-1 grid grid-cols-2 ">
             <section className="flex flex-col px-2 justify-start items-start content-start">
                 <section className="pt-2 w-full">
@@ -98,20 +111,6 @@ export const PublicationPage = () => {
                         offers.map((offer) => (
                             <PublicationCard setSelected={setOfferSelected}></PublicationCard>
                         ))
-
-
-                    }
-
-                    {
-                        offers.length <= 0 && <div className="w-full border border-neutral-950 bg-zinc-50 px-4 flex flex-col items-center" >
-                            <p className="py-2 text-center">No hay nada aun por aca :c, no te olvides de agregar una oferta!! <br/> Click aqui 👇!! </p>
-                            <CustomButton
-                                onClick={setModal}
-                                type="submit"
-                                content="Agregar oferta"
-                                className="my-2.5 bg-blue-400 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
-                            />
-                        </div>
                     }
                 </div>
 
@@ -120,6 +119,7 @@ export const PublicationPage = () => {
                 {offerSelected && <PublicationCardDetail></PublicationCardDetail>}
             </section>
         </section>
+
     </>)
 }
 

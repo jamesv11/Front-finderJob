@@ -31,8 +31,8 @@ export const ModalBase = ({ title, description, question, size, open, children,t
 
     return (<>
         {
-           open ? <div className="z-10 fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
-                <div className={`w-[${size}px] flex flex-col`}>
+           open ? <div className="z-20 fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
+                <div className={`${type === "question" ? 'min-w-[440px] max-w-[440px]':'min-w-[900px] max-w-[900px]'} `}>
                     <button className="text-white text-xl place-self-end" onClick={onChangeModal}>
                         X
                     </button>
@@ -54,7 +54,7 @@ export const ModalBase = ({ title, description, question, size, open, children,t
                                     className="mt-2.5 bg-blue-400 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
                                     onClick={() => onChangeModal(1)}
                                 />
-                                <CustomButton type="submit"
+                                <CustomButton type="button"
                                     content="Cancelar"
                                     className="mt-2.5 bg-red-400 hover:bg-red-500 text-white font-medium py-2 px-4 rounded"
                                     onClick={() => onChangeModal(2)}

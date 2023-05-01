@@ -9,7 +9,7 @@ export const Navbar = () => {
 
     return (
         <>
-            <ModalBase title="Cerrar sesion" question="Estas seguro que deseas finalizar tu sesion?" open={modal} handleModal={setModal} size={440} type={"question"}></ModalBase>
+            <ModalBase title="Cerrar sesion" question="Estas seguro que deseas finalizar tu sesion?" open={modal} handleModal={setModal} size={600} type={"question"}></ModalBase>
             <nav className="">
                 <div className=" flex flex-wrap items-baseline justify-between mx-auto p-4 shadow-lg ">
                     <div><p className="text-4xl text-blue-400 font-medium ">FinderJob</p></div>
