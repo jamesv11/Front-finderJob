@@ -33,7 +33,7 @@ export const ModalBase = ({ title, description, question, size, open, children,t
         {
            open ? <div className="z-20 fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
                 <div className={`${type === "question" ? 'min-w-[440px] max-w-[440px]':'min-w-[900px] max-w-[900px]'} `}>
-                    <button className="text-white text-xl place-self-end" onClick={onChangeModal}>
+                    <button className="text-white text-xl place-self-end" onClick={() => onChangeModal()}>
                         X
                     </button>
                     <div className="bg-white p-2 rounded">

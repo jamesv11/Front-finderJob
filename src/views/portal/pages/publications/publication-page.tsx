@@ -86,7 +86,7 @@ export const PublicationPage = () => {
                 offers.length <= 0 && <div className="inset-20 border border-neutral-950 bg-zinc-50 px-4 flex flex-col items-center z-10 fixed bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center w-full left-0 h-full" >
                     <p className="py-2 text-center">No hay nada aun por aca, no te olvides de agregar una oferta!! <br /> Click aqui 👇!! </p>
                     <CustomButton
-                        onClick={setModal}
+                        onClick={() => setModal(!modal)}
                         type="submit"
                         content="Agregar oferta"
                         className="my-2.5 bg-blue-400 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
@@ -100,7 +100,7 @@ export const PublicationPage = () => {
                     <SearchButton></SearchButton>
                 </section>
                 <CustomButton
-                    onClick={setModal}
+                    onClick={() => setModal(!modal)}
                     type="submit"
                     content="Agregar oferta"
                     className="my-2.5 bg-blue-400 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
