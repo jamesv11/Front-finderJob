@@ -2,7 +2,7 @@ import { cardProps } from "../card/card"
 
 
 export const PublicationCard = (props:any) => {
-    return (<div className="cursor-pointer w-full border border-neutral-950 bg-zinc-50" onClick={() => props.setSelected(true)}>
+    return (<div className="cursor-pointer w-full border border-gray-200 bg-zinc-50 shadow-sm mt-2 rounded" onClick={() => props.setSelected(true)}>
         <div className={`${''} px-3 py-3`}>
             <div className="mb-2 flex justify-between item-baseline">
                 <span className=" font-medium text-xl hover:underline cursor-pointer">

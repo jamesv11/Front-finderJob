@@ -32,7 +32,7 @@ export interface FormCandidate {
 
 }
 
-export const CandidateLogin = ({ className }: formProps) => {
+export const CandidateSignUp = ({ className }: formProps) => {
 
     const [initialValues, setInititalValues] = useState<FormCandidate>({ name: '', description: '', nit: '', address: '', phone: '', email: '', password: '' });
 

@@ -1,8 +1,14 @@
 import { Card } from "../../components/card/card"
-import { CandidateLogin } from "../../components/login/Candidate/candidate-login"
+import { Tabs } from "../../components/commons/tabs";
+import { CandidateSignUp } from "../../components/login/candidate/candidate-signup"
+import { CompanySignUp } from "../../components/login/company/company-signup";
 
 export const SignUpPage = () => {
 
+    const children = [
+        <CandidateSignUp /> ,
+        <CompanySignUp /> 
+    ]
 
     return (
         <div className="h-screen flex flex-col justify-center items-center">
@@ -13,7 +19,9 @@ export const SignUpPage = () => {
                 </article>
                 <article>
                     <Card title="Crea una cuenta" description="" className="bg-zinc-50">
-                        <CandidateLogin />
+                        <Tabs options={['Aspirante','Empresa']}>
+                            {children}
+                        </Tabs>
                     </Card>
                 </article>
             </section>

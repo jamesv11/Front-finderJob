@@ -11,7 +11,7 @@ export const PublicationCardDetail = () => {
     return (
         <>
             <ModalBase title="Eliminar  oferta?" description="Estas a punto de eliminar una oferta publicada permanentemente, perderas cualquier registro o candidato piostulado" question="Estas seguro de realizar esta accion?" open={modal} handleModal={setModal} size={440} type={"question"}></ModalBase>
-            <div className="sm:min-h-[30rem] md:min-h-[30rem] lg:min-h-[40.6rem] xl:min-h-[46rem] 2xl:min-h-[55rem] sm:max-h-[30rem] md:max-h-[30rem] lg:max-h-[41rem] xl:max-h-[46rem] 2xl:max-h-[55rem] w-full border border-neutral-950 bg-zinc-50">
+            <div className="sm:min-h-[30rem] md:min-h-[30rem] lg:min-h-[40.6rem] xl:min-h-[46rem] 2xl:min-h-[55rem] sm:max-h-[30rem] md:max-h-[30rem] lg:max-h-[41rem] xl:max-h-[46rem] 2xl:max-h-[55rem] w-full border border-gray-200 bg-zinc-50 shadow-sm rounded">
                 <div className={`${''} px-8 pt-6`}>
                     <section className="flex justify-between items-baseline mb-2">
                         <span className="font-medium text-xl">

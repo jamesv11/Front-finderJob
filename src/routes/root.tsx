@@ -41,6 +41,7 @@ export const root = () => {
 
 import { lazy, LazyExoticComponent } from "react";
 
+
 type JSXComponent = () => JSX.Element;
 
 interface Route {
@@ -56,6 +57,8 @@ const SignUpPage = lazy(() => import("../views/sign-up/sign-up-page"));
 const PortalPage = lazy(() => import("../views/portal/portal-page"));
 const ProfilePage = lazy(() => import("../views/portal/pages/profile/profile-page"))
 const PublicationPage = lazy(() => import("../views/portal/pages/publications/publication-page"))
+const OffersPage = lazy(() => import("../views/portal/pages/offers/offers-page"))
+
 
 export const privateRoutes: Route[] = [
   {
@@ -74,6 +77,11 @@ export const privateRoutes: Route[] = [
             path:"publications",
             Component:PublicationPage
         },
+        {
+          to:"/offers",
+          path:"offers",
+          Component:OffersPage
+      },
 
     ]
   },

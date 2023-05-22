@@ -109,7 +109,7 @@ export const PublicationPage = () => {
                 <div className="overflow-auto sm:min-h-[30rem] md:min-h-[30rem] lg:min-h-[40.6rem] xl:min-h-[39rem] 2xl:min-h-[49rem] sm:max-h-[30rem] md:max-h-[30rem] lg:max-h-[40.6rem] xl:max-h-[39rem] 2xl:max-h-[49rem]">
                     {
                         offers.map((offer) => (
-                            <PublicationCard setSelected={setOfferSelected}></PublicationCard>
+                            <PublicationCard key={offer} setSelected={setOfferSelected}></PublicationCard>
                         ))
                     }
                 </div>

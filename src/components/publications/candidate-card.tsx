@@ -15,7 +15,7 @@ export const CandidateCard = () => {
             <ModalBase size={900} title="" open={modal} handleModal={setModal} type={"form"} >
                 {modalContent}
             </ModalBase>
-            <div className="cursor-pointer w-full border border-neutral-950 bg-zinc-50 h-[104px] max-h-[104px] min-h-[104px]" onClick={() => setModal(!modal)}>
+            <div className="cursor-pointer w-full border border-gray-200 shadow-md bg-zinc-50 h-[104px] max-h-[104px] min-h-[104px]" onClick={() => setModal(!modal)}>
                 <div className={`${''} px-3 py-3 flex justify-start items-center gap-3`}>
                     <section>
                         <div className="h-20 w-20 rounded-full  bg-gray-200">
