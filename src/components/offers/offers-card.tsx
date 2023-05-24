@@ -1,29 +1,37 @@
-import { ReactElement } from "react";
-import { CustomButton } from "../commons/custom-button"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactElement, useState } from "react";
+import { CustomButton } from "../commons/custom-button";
+import { ModalBase } from "../modal/modal-base";
 
 export interface OfferCardProps {
     title?: string,
-    description?:string,
-    postulate?:boolean,
+    description?: string,
+    postulate?: boolean,
     children?: ReactElement | ReactElement[];
     className?: string;
-    handlePostulation?:Function,
-    modal?:boolean
+    handlePostulation?: Function,
 }
 
-export const OfferCard = ({postulate = true, handlePostulation, modal}:OfferCardProps) => {
+export const OfferCard = ({ postulate = false, handlePostulation }: OfferCardProps) => {
+
+    const [modal, setModal] = useState(false);
+
+    const onDelete = () => {
+
+       
+        setModal(!modal)
 
 
-    const handleClick = () => {
-        handlePostulation &&  handlePostulation(!modal);
     }
 
-    
+
 
     return (<>
-        <article className="w-full p-3 rounded-lg hover:shadow-xl hover:-translate-y-1 transition-all ease-out border border-gray-200 rounded h-fit bg-white ">
-            <h4 className="pb-1 font-bold">Desarollador Frontend</h4>
+        <ModalBase title="Eliminar postulacion" question="Estas seguro que deseas eliminar tu postulacion?" open={modal} handleModal={setModal} size={600} type={"question"} onSubmit={onDelete}></ModalBase>
+        <article className=" w-full p-3 rounded-lg hover:shadow-xl hover:-translate-y-0.5 transition-all ease-out border border-gray-200 rounded h-fit bg-white ">
+            <article className="flex justify-between">
+            <h4 className="pb-1 font-bold">Desarollador Frontend</h4> {postulate && <FontAwesomeIcon className="cursor-pointer" onClick={() => onDelete()} icon={["fas", "trash"]} />}
+            </article>
             <p className="text-sm">Google</p>
             <p className="text-sm">Colombia</p>
             <section className="flex flex-col gap-2">
@@ -34,12 +42,7 @@ export const OfferCard = ({postulate = true, handlePostulation, modal}:OfferCard
                     <p className="pl-2">Tiempo completo</p>
                 </div>
             </section>
-{postulate ?  <CustomButton
-                type="submit"
-                content="Postularse"
-                className="mt-2.5 bg-blue-400 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
-                onClick={() => handleClick()}
-            /> : <div className="bg-green-500 h-fit w-fit p-1 m-1 rounded-md text-white text-sm"> Aceptado </div>}
+            {postulate && <div className="bg-green-500 h-fit w-fit p-1 m-1 rounded-md text-white text-sm"> Aceptado </div>}
             
         </article>
     </>)
