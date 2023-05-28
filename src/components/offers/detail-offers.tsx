@@ -11,8 +11,8 @@ export const DetailOffers = () => {
     }
 
     return <>
-        <ModalBase size={600} title="Postulacion" description="Estas seguro que deseas finalizar tu sesion?" open={modal} handleModal={setModal} type={"question"} ></ModalBase>
-        <article className=" w-full p-3 rounded-lg border border-gray-200 rounded h-fit bg-white ">
+        <ModalBase size={600} title="Postulación" description="Estas seguro que deseas postularte a esta oferta?" open={modal} handleModal={setModal} type={"question"} ></ModalBase>
+        <article className=" w-full p-3 rounded-lg border border-gray-300 rounded h-fit bg-white ">
             <h4 className="pb-1 font-bold">Desarollador Frontend</h4>
             <p className="text-sm">Google</p>
             <p className="text-sm">Colombia</p>
