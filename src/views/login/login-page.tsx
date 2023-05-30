@@ -17,15 +17,6 @@ export const LoginPage = () => {
 
     return (
         <div className="h-screen flex flex-col justify-center items-center">
-            {/* <section className="flex ">
-                <article >
-                    <Card title={companyCard.title} description={companyCard.description}></Card>
-                </article>
-                <article>
-                    <Card title={candidateCard.title} description={candidateCard.description} ></Card>
-                </article>
-
-            </section> */}
             <section className="flex w-full justify-around items-center  ">
                 <article>
                     <h2 className="mb-2 text-4xl font-extrabold leading-none tracking-tight text-blue-400 md:text-6xl lg:text-7xl">Finderjob</h2>

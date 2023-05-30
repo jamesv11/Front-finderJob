@@ -7,6 +7,7 @@ import { InputForm } from "../../commons/input-form";
 
 export interface formProps {
     className?: string;
+    edit?:boolean;
 }
 
 let schema = Yup.object({
@@ -32,7 +33,7 @@ export interface FormCandidate {
 
 }
 
-export const CandidateSignUp = ({ className }: formProps) => {
+export const CandidateSignUp = ({ className, edit = false }: formProps) => {
 
     const [initialValues, setInititalValues] = useState<FormCandidate>({ name: '', description: '', nit: '', address: '', phone: '', email: '', password: '' });
 
@@ -60,7 +61,7 @@ export const CandidateSignUp = ({ className }: formProps) => {
             <div className="flex justify-center items-center">
                 <CustomButton
                     type="submit"
-                    content="Registrarse"
+                    content={`${edit ? 'Editar' : 'Registrarse'}`}
                     className="mt-2.5 bg-blue-400 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
                 />
             </div>

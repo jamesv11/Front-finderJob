@@ -6,7 +6,7 @@ export interface layoutProps {
 
 
 export const Layout = ({ children }: layoutProps) => {
-    return <div className="container mx-auto bg-white border border-gray-200">
+    return <div className="container mx-auto bg-white border border-gray-100">
         {children}
     </div>
 }

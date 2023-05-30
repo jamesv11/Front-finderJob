@@ -1,13 +1,4 @@
-import { useState } from "react";
-import { CustomButton } from "../../../../components/commons/custom-button";
-import { FormBase } from "../../../../components/commons/form-base";
-import { InputAreaForm } from "../../../../components/commons/input-area-form";
-import { InputForm } from "../../../../components/commons/input-form";
-import { ModalBase } from "../../../../components/modal/modal-base";
 import * as Yup from "yup";
-import { SearchButton } from "../../../../components/commons/search-button";
-import { PublicationCard } from "../../../../components/publications/publication-card";
-import { PublicationCardDetail } from "../../../../components/publications/publication-card-detail";
 import { OfferCard } from "../../../../components/offers/offers-card";
 import { NavOffers } from "../../../../components/offers/nav-offers";
 import { MyOffers } from "../../../../components/offers/my-offers";
@@ -37,8 +28,6 @@ export const OffersPage = () => {
     const handlePostulation = (modal: boolean) => {
 
         console.log(modal);
-
-
 
     }
 
