@@ -1,5 +1,6 @@
-import {useState } from "react";
+import { useState } from "react";
 import * as Yup from "yup";
+import loginService from "../../../services/login.service";
 import { CustomButton } from "../../commons/custom-button";
 import { FormBase } from "../../commons/form-base";
 import { InputAreaForm } from "../../commons/input-area-form";
@@ -17,7 +18,8 @@ let schema = Yup.object({
     phone: Yup.string().required("Requerido"),
     email: Yup.string().email("Email invalido.").required("Requerido"),
     password: Yup.string().required("Requerido"),
-    confirmPassword: Yup.string().required("Requerido")
+    confirmPassword: Yup.string().oneOf([Yup.ref("password")], "Las contraseñas no son iguales.")
+        .required("Requerido")
 });
 
 
@@ -68,9 +70,25 @@ export const CompanySignUp = ({ className }: formProps) => {
         </>
     )
 
-    const onSubmit = (values: { [key: string]: any }) => {
-        console.log(values);
+    const onSubmit = async (values: { [key: string]: any }) => {
 
+        const dtoCompany = {
+            "name": values.name,
+            "description": values.description,
+            "nit": values.nit,
+            "address": values.address,
+            "phone": values.phone,
+            "userBE": {
+                "email": values.email,
+                "password": values.password
+            }
+        }
+
+
+        const result = await loginService.createCompany(dtoCompany)
+
+        console.log(result);
+        
     };
 
 

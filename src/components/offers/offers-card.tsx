@@ -9,10 +9,12 @@ export interface OfferCardProps {
     postulate?: boolean,
     children?: ReactElement | ReactElement[];
     className?: string;
-    handlePostulation?: Function,
+    handlePostulation: Function,
+    handleSelected:Function,
+    selected: boolean
 }
 
-export const OfferCard = ({ postulate = false, handlePostulation }: OfferCardProps) => {
+export const OfferCard = ({ postulate = false, handlePostulation , handleSelected, selected}: OfferCardProps) => {
 
     const [modal, setModal] = useState(false);
 
@@ -28,7 +30,7 @@ export const OfferCard = ({ postulate = false, handlePostulation }: OfferCardPro
 
     return (<>
         <ModalBase title="Eliminar postulacion" question="Estas seguro que deseas eliminar tu postulacion?" open={modal} handleModal={setModal} size={600} type={"question"} onSubmit={onDelete}></ModalBase>
-        <article className=" w-full p-3 rounded-lg hover:shadow-xl hover:-translate-y-0.5 transition-all ease-out border border-gray-200 rounded h-fit bg-white ">
+        <article className={`w-full p-3 rounded-lg hover:shadow-xl hover:-translate-y-0.5 transition-all ease-out border ${selected ? 'border-blue-300'  : 'border-gray-200'} rounded h-fit bg-white `} onClick={() => handleSelected()}>
             <article className="flex justify-between">
                 <h4 className="pb-1 font-bold">Desarollador Frontend</h4> {postulate && <FontAwesomeIcon className="cursor-pointer" onClick={() => onDelete()} icon={["fas", "trash"]} />}
             </article>

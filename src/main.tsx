@@ -8,6 +8,8 @@ import './index.css'
 
 library.add(faTrash)
 
+
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App></App>
