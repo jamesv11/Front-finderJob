@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomButton } from "../../../../components/commons/custom-button";
 import { FormBase } from "../../../../components/commons/form-base";
 import { InputAreaForm } from "../../../../components/commons/input-area-form";
@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import Datepicker from "react-tailwindcss-datepicker";
 import { DatePickerField } from "../../../../components/commons/date-picker";
 import offerService from "../../../../services/offer.service";
+import { IOffer, IOffersByCompany } from "../../../../interfaces/interface";
 
 let schema = Yup.object({
     job: Yup.string().required("Requerido"),
@@ -34,6 +35,8 @@ export interface FormOffer {
     applicantProfile: string,
 }
 
+
+
 export const PublicationPage = () => {
 
     const [initialValues, setInititalValues] = useState<FormOffer>({
@@ -49,9 +52,27 @@ export const PublicationPage = () => {
 
     const [modal, setModal] = useState(false);
 
-    const [offers, setOffers] = useState<number[]>([]);
+    const [offers, setOffers] = useState<IOffersByCompany>({} as IOffersByCompany);
 
     const [offerSelected, setOfferSelected] = useState(false);
+
+    useEffect(() => {
+        getOffersById("2")
+    }, [])
+
+    const getOffersById = async (companyId:string) => {
+        
+
+       
+        const result = await offerService.getFindAllByCompanyId(companyId);
+
+        console.log(result);
+
+        setOffers(result)
+
+
+
+    };
 
     const contentForm = (
         <div className="px-4">
@@ -99,23 +120,23 @@ export const PublicationPage = () => {
         setModal(!modal);
 
         const offerDto = {
-            "job" : values.job,
-            "expirationDate" : values.expirationDate.toISOString().split('T')[0],
-            "amountApplicants" : values.amountApplicants,
-            "description" : values.description,
-            "salary" : values.salary,
-            "conditions" : values.conditions,
-            "schedule" : values.schedule,
+            "job": values.job,
+            "expirationDate": values.expirationDate.toISOString().split('T')[0],
+            "amountApplicants": values.amountApplicants,
+            "description": values.description,
+            "salary": values.salary,
+            "conditions": values.conditions,
+            "schedule": values.schedule,
             "applicantProfile": values.applicantProfile,
-            "company":{
-                "id":"2"
+            "company": {
+                "id": "2"
             }
         }
 
         const result = await offerService.createOffer(offerDto)
 
         console.log(result);
-        
+
 
 
     };
@@ -131,7 +152,7 @@ export const PublicationPage = () => {
         </ModalBase>
         <section>
             {
-                offers.length <= 0 && <div className="inset-20 border border-neutral-950 bg-zinc-50 px-4 flex flex-col items-center z-10 fixed bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center w-full left-0 h-full" >
+                offers.lstOffer?.length <= 0 && <div className="inset-20 border border-neutral-950 bg-zinc-50 px-4 flex flex-col items-center z-10 fixed bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center w-full left-0 h-full" >
                     <p className="py-2 text-center">No hay nada aun por aca, no te olvides de agregar una oferta!! <br /> Click aqui 👇!! </p>
                     <CustomButton
                         onClick={() => setModal(!modal)}
@@ -156,7 +177,7 @@ export const PublicationPage = () => {
 
                 <div className="overflow-auto sm:min-h-[30rem] md:min-h-[30rem] lg:min-h-[40.6rem] xl:min-h-[39rem] 2xl:min-h-[49rem] sm:max-h-[30rem] md:max-h-[30rem] lg:max-h-[40.6rem] xl:max-h-[39rem] 2xl:max-h-[49rem]">
                     {
-                        offers.map((offer) => (
+                        offers.lstOffer?.map((offer:IOffer ) => (
                             <PublicationCard key={offer} setSelected={setOfferSelected}></PublicationCard>
                         ))
                     }
