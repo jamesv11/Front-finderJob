@@ -11,7 +11,7 @@ export const SignUpPage = () => {
     ]
 
     return (
-        <div className="h-screen flex flex-col justify-center items-center">
+        <div className="h-full flex flex-col justify-center items-center">
             <section className="flex w-full justify-around items-center  ">
                 <article>
                     <h2 className="mb-2 text-4xl font-extrabold leading-none tracking-tight text-blue-400 md:text-6xl lg:text-7xl">Finderjob</h2>
