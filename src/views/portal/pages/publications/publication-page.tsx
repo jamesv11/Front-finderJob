@@ -8,26 +8,44 @@ import { ModalBase } from "../../../../components/modal/modal-base";
 import { PublicationCard } from "../../../../components/publications/publication-card";
 import { PublicationCardDetail } from "../../../../components/publications/publication-card-detail";
 import * as Yup from "yup";
+import Datepicker from "react-tailwindcss-datepicker";
+import { DatePickerField } from "../../../../components/commons/date-picker";
+import offerService from "../../../../services/offer.service";
 
 let schema = Yup.object({
-    name: Yup.string().required("Requerido"),
-    ubication: Yup.string().required("Requerido"),
-    aboutJob: Yup.string().required("Requerido"),
-    maxNumberCandidates: Yup.number().required("Requerido"),
-
+    job: Yup.string().required("Requerido"),
+    expirationDate: Yup.string().required("Requerido"),
+    amountApplicants: Yup.number().required("Requerido"),
+    description: Yup.string().required("Requerido"),
+    salary: Yup.number().required("Requerido"),
+    conditions: Yup.string().required("Requerido"),
+    schedule: Yup.string().required("Requerido"),
+    applicantProfile: Yup.string().required("Requerido"),
 });
 
 export interface FormOffer {
-    name: string,
-    ubication: string,
-    aboutJob: string,
-    maxNumberCandidates: number
-
+    job: string,
+    expirationDate: Date,
+    amountApplicants: number,
+    description: string,
+    salary: number,
+    conditions: string,
+    schedule: string,
+    applicantProfile: string,
 }
 
 export const PublicationPage = () => {
 
-    const [initialValues, setInititalValues] = useState<FormOffer>({ name: '', ubication: '', aboutJob: '', maxNumberCandidates: 0 });
+    const [initialValues, setInititalValues] = useState<FormOffer>({
+        job: "",
+        expirationDate: new Date(),
+        amountApplicants: 0,
+        description: "",
+        salary: 0,
+        conditions: "",
+        schedule: "",
+        applicantProfile: ""
+    });
 
     const [modal, setModal] = useState(false);
 
@@ -38,14 +56,27 @@ export const PublicationPage = () => {
     const contentForm = (
         <div className="px-4">
             <div className="grid gap-6 mb-6 md:grid-cols-2">
-                <InputForm label="Nombre de la propuesta" type="text" name="name" />
-                <InputForm label="Ubicacion" type="text" name="ubication" />
-            </div>
-            <div>
-                <InputAreaForm label="Acerca del empleo" name="aboutJob" placeholder="De que se trata?..." />
+                <InputForm label="Nombre de la oferta" type="text" name="job" />
+                <div>
+                    <label htmlFor=""></label>
+                    <div className="flex items-baseline">
+                        <DatePickerField name="expirationDate" />
+                    </div>
+                </div>
             </div>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
-                <InputForm label="Numero maximo de solicitantes" type="number" name="maxNumberCandidates" />
+                <InputForm label="Salario" type="number" name="salary" />
+                <InputForm label="Condiciones" type="text" name="conditions" />
+            </div>
+            <div className="grid gap-6 mb-6 md:grid-cols-2">
+                <InputForm label="Jornada" type="text" name="schedule" />
+                <InputForm label="Perfil del aplicante" type="text" name="applicantProfile" />
+            </div>
+            <div>
+                <InputAreaForm label="Acerca del empleo" name="description" placeholder="De que se trata?..." />
+            </div>
+            <div className="grid gap-6 mb-6 md:grid-cols-2">
+                <InputForm label="Numero maximo de solicitantes" type="number" name="amountApplicants" />
             </div>
             <div className="pt-2 pb-4 flex justify-around">
                 <CustomButton
@@ -64,11 +95,28 @@ export const PublicationPage = () => {
 
 
 
-    const onSubmit = (values: { [key: string]: any }) => {
-        console.log(values);
-        const newOffers = [...offers, 1]
-        setOffers(newOffers);
+    const onSubmit = async (values: { [key: string]: any }) => {
         setModal(!modal);
+
+        const offerDto = {
+            "job" : values.job,
+            "expirationDate" : values.expirationDate.toISOString().split('T')[0],
+            "amountApplicants" : values.amountApplicants,
+            "description" : values.description,
+            "salary" : values.salary,
+            "conditions" : values.conditions,
+            "schedule" : values.schedule,
+            "applicantProfile": values.applicantProfile,
+            "company":{
+                "id":"2"
+            }
+        }
+
+        const result = await offerService.createOffer(offerDto)
+
+        console.log(result);
+        
+
 
     };
 
